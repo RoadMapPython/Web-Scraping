@@ -1,5 +1,5 @@
 # Web-Scrapping
-## Código com o jogo da forca , um readme para mais detalhes e o link da live gravada: YouTube:
+## Componentes usados na live,e um readme para mais detalhes e o link da live gravada: YouTube:
 ###### -Obs: tem um dicionário de palavras no final do documento
 
 ===============================|Introdução|==================================<br />
