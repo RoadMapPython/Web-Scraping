@@ -15,3 +15,18 @@ Alguns conceitos
 * bs4: Parses HTML, o formato em que as páginas da Web estão escritas.
 
 * selenium: Lança e controla um navegador da Web. O módulo de selênio é capaz de preencher formulários e simular cliques do mouse neste navegador.
+
+Web-Scrapping é basicamente é eu extrair dados de paginas web, conseguindo acessar exatamente o que desejo 
+,so que no meu codigo em python ,facil ne?
+
+import requests
+
+response = requests.get('https://www.pudim.com/')
+
+print('Status do codigo:', response.status_code)
+
+print('Cabeçalho')
+print(response.headers)
+
+print('\n↓↓ Content ↓↓')
+print(response.content)
