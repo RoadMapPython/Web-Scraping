@@ -1,6 +1,6 @@
 # Web-Scrapping
 ## Código com o jogo da forca , um readme para mais detalhes e o link da live gravada: YouTube:
--Obs: tem um dicionário de palavras no final do documento
+###### -Obs: tem um dicionário de palavras no final do documento
 
 ===============================|Introdução|==================================<br />
 Web-Scrapping é o termo para usar um programa para baixar e processar conteúdo da web.
