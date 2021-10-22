@@ -18,12 +18,14 @@ Alguns conceitos
 
 Web-Scrapping é basicamente é eu extrair dados de paginas web, conseguindo acessar exatamente o que desejo 
 ,so que no meu codigo em python ,facil ne?
-==============================================================================
+
+=======================================================================<br />
 Agora iremos realizar a instalação de uma biblioteca que iremos usar durante a criação do código
 * Vamos la no windows+R 
 * Digita cmd 
 * E digite o comando pip install requests
-=============================================================================
+
+======================================================================<br />
 import requests
 
 response = requests.get('https://www.pudim.com/')
