@@ -21,7 +21,7 @@ Quero tentar introduzir dois conceitos e aborda-los nessa live que vai ser o "we
 Web-Scrapping é basicamente é eu extrair dados de paginas web, conseguindo acessar exatamente o que desejo 
 ,so que no meu codigo em python ,facil ne?
 
-==========================|Construção do codigo|============================<br />
+==========================|⚙️Construção do codigo⚙️|============================<br />
 Vou começar com o webbrowser
 
 import webbrowser
