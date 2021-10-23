@@ -25,6 +25,7 @@ Web-Scrapping é basicamente é eu extrair dados de paginas web, conseguindo ace
 Vou começar com o webbrowser
 
 import webbrowser
+
 webbrowser.open('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
 
 Aqui abrimos a pagina web que desejamos via código python, util ne? 
