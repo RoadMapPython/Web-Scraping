@@ -2,7 +2,7 @@
 ## Componentes usados na live,e um readme para mais detalhes e o link da live gravada: YouTube:
 ###### -Obs: tem um dicionário de palavras no final do documento
 
-============================|📚Introdução📚|=====================================<br />
+=======================|📚Introdução📚|=====================<br />
 Web-Scrapping é o termo para usar um programa para baixar e processar conteúdo da web.
 Por exemplo, o Google executa muitos programas de Web-Scrapping para indexar 
 páginas da Web para seu mecanismo de busca.
