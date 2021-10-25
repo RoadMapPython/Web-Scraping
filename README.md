@@ -31,9 +31,6 @@ webbrowser.open('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roa
 Aqui abrimos a pagina web que desejamos via código python, util ne? 
 
 ======================================================================<br />
-
-======================================================================<br />
-======================================================================<br />
 Agora iremos realizar a instalação de uma outra biblioteca que iremos usar durante a criação do código
 * Vamos la no windows+R 
 * Digita cmd 
