@@ -32,17 +32,20 @@ Aqui abrimos a pagina web que desejamos via código python, util ne?
 
 ======================================================================<br />
 
-Agora iremos realizar a instalação de uma biblioteca que iremos usar durante a criação do código
+======================================================================<br />
+======================================================================<br />
+Agora iremos realizar a instalação de uma outra biblioteca que iremos usar durante a criação do código
 * Vamos la no windows+R 
 * Digita cmd 
-* E digite o comando pip install requests
+* E digite o comando:pip install requests
 
 ======================================================================<br />
 Vamos importar a biblioteca "requests" e usar o metodo get
 
 import requests
 
-response = requests.get('https://www.pudim.com.br/')
+response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+print('Status do codigo:', response.status_code)
 
 Os códigos de status das respostas HTTP indicam se uma requisição HTTP foi corretamente concluída.
 As respostas são agrupadas em cinco classes:
@@ -52,19 +55,62 @@ As respostas são agrupadas em cinco classes:
 * Redirecionamentos (300-399)
 * Erros do cliente (400-499)
 * Erros do servidor (500-599).
-======================================================================<br />
 
+======================================================================<br />
 import requests
 
-response = requests.get('https://www.pudim.com/')
+response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
 print('Status do codigo:', response.status_code)
 
 print('Cabeçalho')
 print(response.headers)
 
-print('\n↓↓ Content ↓↓')
-print(response.content)
+O cabeçalho mostra as informações do site , vários atributos utilizados.
+
 ======================================================================<br />
+import requests
+
+response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+print('Status do codigo:', response.status_code)
+
+print('Cabeçalho')
+print(response.headers)
+
+print('\nConteudo')
+print(response.content)
+
+O conteudo ele mostra todo o conteudo do site em si , todo o código html dele ,
+sabe quando você clica em inspecionar? então é isso!
+
+======================================================================<br />
+Iremos utilizar o BeaultifulSoup da biblioteca bs4, com isso teremos de instalar 
+o pacote.
+* Windows+R 
+* Digita cmd 
+* E digite o comando:pip install bs4
+
+======================================================================<br />
+import requests
+from bs4 import BeautifulSoup
+
+response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+
+content = response.content
+
+site = BeautifulSoup(content, 'html.parser')
+
+# HTML da notícia
+noticia = site.find('div', attrs={'class': 'feed-post-body'})
+
+# Título
+titulo = noticia.find('a', attrs={'class': 'feed-post-link'})
+
+print(titulo.text)
+
+# Subtítulo: div class="feed-post-body-resumo"
+subtitulo = noticia.find('div', attrs={'class': 'feed-post-body-resumo'})
+
+print(subtitulo.text)
 ======================================================================<br />
 ---Dicionário---<br />
 requests<br />
