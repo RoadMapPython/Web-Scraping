@@ -42,7 +42,7 @@ Vamos importar a biblioteca "requests" e usar o metodo get
 import requests
 
 texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
-print('Status do codigo:', response.status_code)
+print('Status do codigo:', texto_html.status_code)
 
 Os códigos de status das respostas HTTP indicam se uma requisição HTTP foi corretamente concluída.
 As respostas são agrupadas em cinco classes:
@@ -56,8 +56,7 @@ As respostas são agrupadas em cinco classes:
 ======================================================================<br />
 import requests
 
-response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
-print('Status do codigo:', response.status_code)
+response = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
 
 print('Cabeçalho')
 print(response.headers)
@@ -67,8 +66,7 @@ O cabeçalho mostra as informações do site , vários atributos utilizados.
 ======================================================================<br />
 import requests
 
-response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
-print('Status do codigo:', response.status_code)
+response = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
 
 print('Cabeçalho')
 print(response.headers)
