@@ -26,7 +26,7 @@ Vou começar com o webbrowser
 
 import webbrowser
 
-webbrowser.open('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+webbrowser.open('https://www.vagas.com.br/vagas-de-programador-python?')
 
 Aqui abrimos a pagina web que desejamos via código python, util ne? 
 
@@ -41,7 +41,7 @@ Vamos importar a biblioteca "requests" e usar o metodo get
 
 import requests
 
-response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
 print('Status do codigo:', response.status_code)
 
 Os códigos de status das respostas HTTP indicam se uma requisição HTTP foi corretamente concluída.
