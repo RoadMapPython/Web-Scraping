@@ -153,6 +153,54 @@ datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
 print("Nome da empresa{}" .format(nomedaempresa))
 print("Habilidades Necessarias{}".format(habilidades))
 print(datadepubli)
+
+=====================|Segundo código explicado|======================<br />
+from bs4 import BeautifulSoup
+import requests 
+
+
+html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
+soup=BeautifulSoup(html_text,"lxml")
+* Buscar tudo  pagina WEB , a tag li na class vaga odd
+empregos=soup.find_all('li',class_="vaga odd")
+for emprego in empregos:
+* Nome da empresa sem as tags html
+  nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
+* Habilidades Necessarias
+  habilidades=emprego.find('div',class_="detalhes").text.replace("","")
+* data de publicacao
+  datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
+  print("Nome da empresa{}" .format(nomedaempresa)
+       +"Habilidades Necessarias{}".format(habilidades)
+       +"Data da Publicacao{}".format(datadepubli))
+
+  print(" ")     
+  
+=====================|Terceiro código explicado|======================<br />
+from bs4 import BeautifulSoup
+import requests 
+
+* Bucar no endereco html
+html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
+* Transformar o html em lxml para facilitar a leitura do python
+soup=BeautifulSoup(html_text,"lxml")
+* Buscar tudo  pagina WEB , a tag li na class vaga odd
+empregos=soup.find_all('li',class_="vaga odd")
+
+with open ("empregos.txt","w") as arquivo:
+  for emprego in empregos:
+  * Nome da empresa sem as tags html
+    nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
+  * Habilidades Necessarias
+    habilidades=emprego.find('div',class_="detalhes").text.replace("","")
+  * data de publicacao
+    datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
+    informacoes={
+      "Nome da empresa":nomedaempresa+"",
+      "Habilidades Necessarias":habilidades+"",
+      "Data da publicacao":datadepubli+"",
+    }
+    arquivo.write (str(informacoes)+"\r\n" +"\r\n")
 ======================================================================<br />
 ---Dicionário---<br />
 requests<br />
