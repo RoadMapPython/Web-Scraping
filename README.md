@@ -26,7 +26,7 @@ Vou começar com o webbrowser
 
 import webbrowser
 
-webbrowser.open('https://www.vagas.com.br/vagas-de-programador-python?')
+webbrowser.open('https://www.vagas.com.br/vagas-de-programador-python')
 
 Aqui abrimos a pagina web que desejamos via código python, util ne? 
 
@@ -41,7 +41,7 @@ Vamos importar a biblioteca "requests" e usar o metodo get
 
 import requests
 
-texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
+texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
 print('Status do codigo:', texto_html.status_code)
 
 Os códigos de status das respostas HTTP indicam se uma requisição HTTP foi corretamente concluída.
@@ -56,23 +56,23 @@ As respostas são agrupadas em cinco classes:
 ======================================================================<br />
 import requests
 
-response = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
+texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
 
 print('Cabeçalho')
-print(response.headers)
+print(texto_html.headers)
 
 O cabeçalho mostra as informações do site , vários atributos utilizados.
 
 ======================================================================<br />
 import requests
 
-response = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
+texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
 
-print('Cabeçalho')
-print(response.headers)
+print('Cabeçalho\n')
+print(texto_html.headers)
 
-print('\nConteudo')
-print(response.content)
+print('\nConteudo\n')
+print(texto_html.content)
 
 O conteudo ele mostra todo o conteudo do site em si , todo o código html dele ,
 sabe quando você clica em inspecionar? então é isso!
@@ -88,9 +88,9 @@ o pacote.
 import requests
 from bs4 import BeautifulSoup
 
-response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
 
-conteudo = response.content
+conteudo = texto_html.content
 
 site = BeautifulSoup(conteudo, 'html.parser')
 
@@ -110,9 +110,9 @@ que mostra o código todo html de uma forma mais organizada no padrão html
 import requests
 from bs4 import BeautifulSoup
 
-response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
 
-conteudo = response.content
+conteudo = texto_html.content
 
 site = BeautifulSoup(conteudo, 'html.parser')
 corpo= site.find('div',attrs{'class':'span9 internas' })
@@ -127,9 +127,9 @@ Ele procura o primeiro div com a classe desejada e talvez mais a frente iremos c
 import requests
 from bs4 import BeautifulSoup
 
-response = requests.get('https://sistemas.riopomba.ifsudestemg.edu.br/dacc/index.php/roadmap-python-ensino')
+texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
 
-conteudo = response.content
+conteudo = texto_html.content
 
 site = BeautifulSoup(conteudo, 'html.parser')
 corpo= site.find('div',attrs{'class':'span9 internas' })
@@ -140,41 +140,36 @@ print(indice.text)
 aqui iremos procurar o indice do nosso site na variavel "indice", 
 e no print mostramos so o texto do indice que é "Índice - Roadmap Python"
 ======================================================================<br />
-import requests
+======================================================================<br />
+===================|Primeiro código explicado|=================<br />
 from bs4 import BeautifulSoup
-import pandas as pd
+import requests 
 
-lista_noticias = []
+* Endereco da WEB a ser analisado
 
-response = requests.get('https://g1.globo.com/')
+texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
 
-content = response.content
+* Vamos ler o arquivo html transformar em lxml, para facilitar a leitura com python
 
-site = BeautifulSoup(content, 'html.parser')
+soup=BeautifulSoup(texto_html,"lxml")
 
-# HTML da notícia
-noticias = site.findAll('div', attrs={'class': 'feed-post-body'})
+* Buscador de vagas
+emprego=soup.find('li',class_="vaga odd")
 
-for noticia in noticias:
-  # Título
-  titulo = noticia.find('a', attrs={'class': 'feed-post-link'})
+* Nome da empresa sem as tags html
 
-  # print(titulo.text)
-  # print(titulo['href']) # link da notícia
+nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
 
-  # Subtítulo: div class="feed-post-body-resumo"
-  subtitulo = noticia.find('div', attrs={'class': 'feed-post-body-resumo'})
+* Habilidades Necessarias
+habilidades=emprego.find('div',class_="detalhes").text.replace("","")
 
-  if (subtitulo):
-    # print(subtitulo.text)
-    lista_noticias.append([titulo.text, subtitulo.text, titulo['href']])
-  else:
-    lista_noticias.append([titulo.text, '', titulo['href']])
+* data de publicacao
+/m
 
-
-news = pd.DataFrame(lista_noticias, columns=['Título', 'Subtítulo', 'Link'])
-
-news.to_excel('noticias.xlsx', index=False)
+datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
+print("Nome da empresa{}" .format(nomedaempresa))
+print("Habilidades Necessarias{}".format(habilidades))
+print(datadepubli)
 ======================================================================<br />
 ---Dicionário---<br />
 requests<br />
