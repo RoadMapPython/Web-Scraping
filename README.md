@@ -146,18 +146,17 @@ print("Nome da empresa{}" .format(nomedaempresa))
 print("Habilidades Necessarias{}".format(habilidades))
 print(datadepubli)
   
-Aqui iremos procurar a data de publicação
+Aqui iremos procurar a data de publicação , e imprimir as variaveis nomedaempresa e habilidades.
   
-
-=====================|⚙️Construção do Segundo código⚙️|======================<br />
+=====================|⚙️Segundo código⚙️|======================<br />
 from bs4 import BeautifulSoup<br />
 import requests 
 
-html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
-soup=BeautifulSoup(html_text,"lxml")<br />
+texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
+site=BeautifulSoup(html_text,"lxml")<br />
   
 * Aqui buscamos tudo da tag <li> que tenha classe "vaga odd"<br />
-empregos=soup.find_all('li',class_="vaga odd")
+empregos=site.find_all('li',class_="vaga odd")
   
 for emprego in empregos:<br />
   
@@ -184,10 +183,10 @@ import requests
 html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
 
   * Transformar o html em lxml para facilitar a leitura do python<br />
-soup=BeautifulSoup(html_text,"lxml")<br />
+site=BeautifulSoup(html_text,"lxml")<br />
 
   * Buscar tudo  pagina WEB , a tag li na class vaga odd<br />
-empregos=soup.find_all('li',class_="vaga odd")
+empregos=site.find_all('li',class_="vaga odd")
 
 with open ("empregos.txt","w") as arquivo:<br />
   for emprego in empregos:<br />
