@@ -175,23 +175,29 @@ for emprego in empregos:<br />
 
   print(" ")     
   
-=====================|Terceiro código explicado|======================<br />
+=====================|⚙️Terceiro código explicado⚙️|======================<br />
 from bs4 import BeautifulSoup<br />
 import requests 
 
-* Bucar no endereco html<br />
+
+  * Bucar no endereco html<br />
 html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
-* Transformar o html em lxml para facilitar a leitura do python<br />
+
+  * Transformar o html em lxml para facilitar a leitura do python<br />
 soup=BeautifulSoup(html_text,"lxml")<br />
-* Buscar tudo  pagina WEB , a tag li na class vaga odd<br />
+
+  * Buscar tudo  pagina WEB , a tag li na class vaga odd<br />
 empregos=soup.find_all('li',class_="vaga odd")
 
 with open ("empregos.txt","w") as arquivo:<br />
   for emprego in empregos:<br />
+  
   * Nome da empresa sem as tags html<br />
     nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")<br />
+  
   * Habilidades Necessarias<br />
     habilidades=emprego.find('div',class_="detalhes").text.replace("","")<br />
+  
   * data de publicacao<br />
     datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")<br />
     informacoes={<br />
