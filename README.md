@@ -130,10 +130,10 @@ import requests
 texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
 
 * Primeiramente passamos o texto do site para formato lxml para o pythom compreender melhor.<br />
-soup=BeautifulSoup(texto_html,"lxml")
+site=BeautifulSoup(texto_html,"lxml")
 
 * Procuramos algum <li> com a classe "vaga odd".<br />
-emprego=soup.find('li',class_="vaga odd")
+emprego=site.find('li',class_="vaga odd")
 
 * Procuramos o nome da empresa sem as tags html e as habilidades necessárias<br />
 nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
