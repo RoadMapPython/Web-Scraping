@@ -123,70 +123,54 @@ utilizamos o find para achar o div com a classe documentFirstHeading.
 attrs significa atributos,
 Ele procura o primeiro div com a classe desejada e talvez mais a frente iremos comentar sobre.
 
-=====================|⚙️Construção do primeiro código⚙️|======================<br />
+=====================|⚙️Construção do Primeiro código⚙️|======================<br />
 from bs4 import BeautifulSoup
 import requests 
 
 texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
 
+* Primeiramente passamos o texto do site para formato lxml para o pythom compreender melhor.<br />
 soup=BeautifulSoup(texto_html,"lxml")
 
+* Procuramos algum <li> com a classe "vaga odd".<br />
 emprego=soup.find('li',class_="vaga odd")
 
+* Procuramos o nome da empresa sem as tags html e as habilidades necessárias<br />
 nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
-
-Primeiramente passamos o texto do site para formato lxml para o pythom compreender melhor.<br />
-Procuramos algum <li> com a classe "vaga odd".<br />
-Procuramos o nome da empresa sem as tags html<br />
-
-=====================|Primeiro código explicado|======================<br />
-from bs4 import BeautifulSoup
-import requests 
-
-* Endereco da WEB a ser analisado
-
-texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
-
-* Vamos ler o arquivo html transformar em lxml, para facilitar a leitura com python
-
-soup=BeautifulSoup(texto_html,"lxml")
-
-* Buscador de vagas
-emprego=soup.find('li',class_="vaga odd")
-
-* Nome da empresa sem as tags html
-
-nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
-
-* Habilidades Necessarias
 habilidades=emprego.find('div',class_="detalhes").text.replace("","")
 
-* data de publicacao
-/m
+\n
 
 datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
 print("Nome da empresa{}" .format(nomedaempresa))
 print("Habilidades Necessarias{}".format(habilidades))
 print(datadepubli)
+  
+Aqui iremos procurar a data de publicação
+  
 
-=====================|Segundo código explicado|======================<br />
-from bs4 import BeautifulSoup
+=====================|⚙️Construção do Segundo código⚙️|======================<br />
+from bs4 import BeautifulSoup<br />
 import requests 
 
-
-html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
-soup=BeautifulSoup(html_text,"lxml")
-* Buscar tudo  pagina WEB , a tag li na class vaga odd
+html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
+soup=BeautifulSoup(html_text,"lxml")<br />
+  
+* Aqui buscamos tudo da tag <li> que tenha classe "vaga odd"<br />
 empregos=soup.find_all('li',class_="vaga odd")
-for emprego in empregos:
-* Nome da empresa sem as tags html
+  
+for emprego in empregos:<br />
+  
+* Nome da empresa sem as tags html<br />
   nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
-* Habilidades Necessarias
+  
+* Habilidades Necessarias<br />
   habilidades=emprego.find('div',class_="detalhes").text.replace("","")
-* data de publicacao
-  datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
-  print("Nome da empresa{}" .format(nomedaempresa)
-       +"Habilidades Necessarias{}".format(habilidades)
+  
+* data de publicacao<br />
+  datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")<br />
+  print("Nome da empresa{}" .format(nomedaempresa)<br />
+       +"Habilidades Necessarias{}".format(habilidades)<br />
        +"Data da Publicacao{}".format(datadepubli))
 
   print(" ")     
