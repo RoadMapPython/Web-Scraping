@@ -54,74 +54,11 @@ As respostas são agrupadas em cinco classes:
 * Erros do servidor (500-599).
 
 ======================================================================<br />
-import requests
-
-texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python?')
-
-print('Cabeçalho')
-print(texto_html.headers)
-
-O cabeçalho mostra as informações do site , vários atributos utilizados.
-
-======================================================================<br />
-import requests
-
-texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
-
-print('Cabeçalho\n')
-print(texto_html.headers)
-
-print('\nConteudo\n')
-print(texto_html.content)
-
-O conteudo ele mostra todo o conteudo do site em si , todo o código html dele ,
-sabe quando você clica em inspecionar? então é isso!
-
-======================================================================<br />
-Iremos utilizar o BeaultifulSoup da biblioteca bs4, com isso teremos de instalar 
+Iremos utilizar o BeaultifulSoup da biblioteca lxml, com isso teremos de instalar 
 o pacote.
 * Windows+R 
 * Digita cmd 
-* E digite o comando:pip install bs4
-
-======================================================================<br />
-import requests
-from bs4 import BeautifulSoup
-
-texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
-
-conteudo = texto_html.content
-
-site = BeautifulSoup(conteudo, 'html.parser')
-
-print(type(site))
-
-Estamos salvando o conteudo na váriavel "conteudo" 
-Na váriavel "site" que criamos , passamos a variavel "conteudo" para o BeautifulSoup , 
-em formato html.
-O print foi somente para visualizar qual o tipo do site , não para imprimir a variavel site,
-pois se imprimisse iria aparecer muita coisa
-
-Podemos também imprimir com 
-print(site.prettify())
-que mostra o código todo html de uma forma mais organizada no padrão html
-
-======================================================================<br />
-import requests
-from bs4 import BeautifulSoup
-
-texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
-
-conteudo = texto_html.content
-
-site = BeautifulSoup(conteudo, 'html.parser')
-corpo= site.find('div',attrs={'class':'pesquisaConteudoWrapper' })
-print(corpo.prettify())
-
-aqui iremos colocar dentro da variavel "corpo" uma parte do site que desejamos ver,
-utilizamos o find para achar o div com a classe documentFirstHeading.
-attrs significa atributos,
-Ele procura o primeiro div com a classe desejada e talvez mais a frente iremos comentar sobre.
+* E digite o comando:pip install lxml
 
 =====================|⚙️Construção do Primeiro código⚙️|======================<br />
 from bs4 import BeautifulSoup
@@ -135,6 +72,14 @@ site=BeautifulSoup(texto_html,"lxml")
 * Procuramos algum <li> com a classe "vaga odd".<br />
 emprego=site.find('li',class_="vaga odd")
 
+Como achei vaga odd no inspecionar? <br />
+Siga as setinhas abaixo :)<br />
+<div class="pesquisaConteudoWrapper"> <br />
+  <section id="pesquisaResultado"> <br />
+    <section class="grupoDeVagas">  <br />
+      <div id="todasVagas"> <br />
+         <li class="vaga odd"> <br />
+  
 * Procuramos o nome da empresa sem as tags html e as habilidades necessárias<br />
 nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
 habilidades=emprego.find('div',class_="detalhes").text.replace("","")
@@ -188,7 +133,7 @@ site=BeautifulSoup(html_text,"lxml")<br />
   * Buscar tudo  pagina WEB , a tag li na class vaga odd<br />
 empregos=site.find_all('li',class_="vaga odd")
 
-with open ("empregos.txt","w") as arquivo:<br />
+with open ("empregos.txt","w",'encoding='utf-8') as arquivo:<br />
   for emprego in empregos:<br />
   
   * Nome da empresa sem as tags html<br />
