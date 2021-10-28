@@ -123,7 +123,22 @@ utilizamos o find para achar o div com a classe documentFirstHeading.
 attrs significa atributos,
 Ele procura o primeiro div com a classe desejada e talvez mais a frente iremos comentar sobre.
 
-======================================================================<br />
+=====================|⚙️Construção do primeiro código⚙️|======================<br />
+from bs4 import BeautifulSoup
+import requests 
+
+texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
+
+soup=BeautifulSoup(texto_html,"lxml")
+
+emprego=soup.find('li',class_="vaga odd")
+
+nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
+
+Primeiramente passamos o texto do site para formato lxml para o pythom compreender melhor.<br />
+Procuramos algum <li> com a classe "vaga odd".<br />
+Procuramos o nome da empresa sem as tags html<br />
+
 =====================|Primeiro código explicado|======================<br />
 from bs4 import BeautifulSoup
 import requests 
