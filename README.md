@@ -177,29 +177,29 @@ for emprego in empregos:
   print(" ")     
   
 =====================|Terceiro código explicado|======================<br />
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup<br />
 import requests 
 
-* Bucar no endereco html
-html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
-* Transformar o html em lxml para facilitar a leitura do python
-soup=BeautifulSoup(html_text,"lxml")
-* Buscar tudo  pagina WEB , a tag li na class vaga odd
+* Bucar no endereco html<br />
+html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
+* Transformar o html em lxml para facilitar a leitura do python<br />
+soup=BeautifulSoup(html_text,"lxml")<br />
+* Buscar tudo  pagina WEB , a tag li na class vaga odd<br />
 empregos=soup.find_all('li',class_="vaga odd")
 
-with open ("empregos.txt","w") as arquivo:
-  for emprego in empregos:
-  * Nome da empresa sem as tags html
-    nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
-  * Habilidades Necessarias
-    habilidades=emprego.find('div',class_="detalhes").text.replace("","")
-  * data de publicacao
-    datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
-    informacoes={
-      "Nome da empresa":nomedaempresa+"",
-      "Habilidades Necessarias":habilidades+"",
-      "Data da publicacao":datadepubli+"",
-    }
+with open ("empregos.txt","w") as arquivo:<br />
+  for emprego in empregos:<br />
+  * Nome da empresa sem as tags html<br />
+    nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")<br />
+  * Habilidades Necessarias<br />
+    habilidades=emprego.find('div',class_="detalhes").text.replace("","")<br />
+  * data de publicacao<br />
+    datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")<br />
+    informacoes={<br />
+      "Nome da empresa":nomedaempresa+"",<br />
+      "Habilidades Necessarias":habilidades+"",<br />
+      "Data da publicacao":datadepubli+"",<br />
+    }<br />
     arquivo.write (str(informacoes)+"\r\n" +"\r\n")
 ======================================================================<br />
 ---Dicionário---<br />
