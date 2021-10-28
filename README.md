@@ -115,33 +115,16 @@ texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python'
 conteudo = texto_html.content
 
 site = BeautifulSoup(conteudo, 'html.parser')
-corpo= site.find('div',attrs{'class':'span9 internas' })
-print(indice.prettify())
+corpo= site.find('div',attrs={'class':'pesquisaConteudoWrapper' })
+print(corpo.prettify())
 
 aqui iremos colocar dentro da variavel "corpo" uma parte do site que desejamos ver,
 utilizamos o find para achar o div com a classe documentFirstHeading.
-attrs=atributos
-Ele procura o primeiro div com a classe desejada e talvez mais a frente iremos comentar sobre
+attrs significa atributos,
+Ele procura o primeiro div com a classe desejada e talvez mais a frente iremos comentar sobre.
 
 ======================================================================<br />
-import requests
-from bs4 import BeautifulSoup
-
-texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
-
-conteudo = texto_html.content
-
-site = BeautifulSoup(conteudo, 'html.parser')
-corpo= site.find('div',attrs{'class':'span9 internas' })
-
-indice= corpo.find('a', attrs={'class': 'documentFirstHeading'})
-print(indice.text)
-
-aqui iremos procurar o indice do nosso site na variavel "indice", 
-e no print mostramos so o texto do indice que é "Índice - Roadmap Python"
-======================================================================<br />
-======================================================================<br />
-===================|Primeiro código explicado|=================<br />
+=====================|Primeiro código explicado|======================<br />
 from bs4 import BeautifulSoup
 import requests 
 
