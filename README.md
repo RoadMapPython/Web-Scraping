@@ -21,7 +21,7 @@ Quero tentar introduzir dois conceitos e aborda-los nessa live que vai ser o "we
 Web-Scrapping é basicamente é eu extrair dados de paginas web, conseguindo acessar exatamente o que desejo 
 ,so que no meu codigo em python ,facil ne?
 
-==========================|⚙️Construção do codigo⚙️|============================<br />
+==========================|✨Um pouco do básico✨|============================<br />
 Vou começar com o webbrowser
 
 import webbrowser
@@ -30,13 +30,13 @@ webbrowser.open('https://www.vagas.com.br/vagas-de-programador-python')
 
 Aqui abrimos a pagina web que desejamos via código python, util ne? 
 
-======================================================================<br />
+
 Agora iremos realizar a instalação de uma outra biblioteca que iremos usar durante a criação do código
 * Vamos la no windows+R 
 * Digita cmd 
 * E digite o comando:pip install requests
 
-======================================================================<br />
+
 Vamos importar a biblioteca "requests" e usar o metodo get
 
 import requests
@@ -53,7 +53,7 @@ As respostas são agrupadas em cinco classes:
 * Erros do cliente (400-499)
 * Erros do servidor (500-599).
 
-======================================================================<br />
+
 Iremos utilizar o BeaultifulSoup da biblioteca lxml, com isso teremos de instalar 
 o pacote.
 * Windows+R 
@@ -61,95 +61,111 @@ o pacote.
 * E digite o comando:pip install lxml
 
 =====================|⚙️Construção do Primeiro código⚙️|======================<br />
+```
 from bs4 import BeautifulSoup
 import requests 
 
 texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
-
-* Primeiramente passamos o texto do site para formato lxml para o pythom compreender melhor.<br />
+```
+_Primeiramente passamos o texto do site para formato lxml para o pythom compreender melhor._<br />
+```
 site=BeautifulSoup(texto_html,"lxml")
-
-* Procuramos algum <li> com a classe "vaga odd".<br />
+```
+_Procuramos algum < li > com a classe "vaga odd"._<br />
+```
 emprego=site.find('li',class_="vaga odd")
-
-Como achei vaga odd no inspecionar? <br />
+```
+_Como achei vaga odd no inspecionar?_ <br />
 Siga as setinhas abaixo :)<br />
-<div class="pesquisaConteudoWrapper"> <br />
-  <section id="pesquisaResultado"> <br />
-    <section class="grupoDeVagas">  <br />
-      <div id="todasVagas"> <br />
-         <li class="vaga odd"> <br />
-  
-* Procuramos o nome da empresa sem as tags html e as habilidades necessárias<br />
+```
+<div class="pesquisaConteudoWrapper">
+  <section id="pesquisaResultado">
+    <section class="grupoDeVagas">
+       <div id="todasVagas">
+          <li class="vaga odd"> 
+```
+_Procuramos o nome da empresa sem as tags html e as habilidades necessárias_<br />
+```
 nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
 habilidades=emprego.find('div',class_="detalhes").text.replace("","")
-
 \n
-
 datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
 print("Nome da empresa{}" .format(nomedaempresa))
 print("Habilidades Necessarias{}".format(habilidades))
 print(datadepubli)
-  
+```
 Aqui iremos procurar a data de publicação , e imprimir as variaveis nomedaempresa e habilidades.
   
 =====================|⚙️Segundo código⚙️|======================<br />
-from bs4 import BeautifulSoup<br />
+```
+from bs4 import BeautifulSoup
 import requests 
 
-texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
-site=BeautifulSoup(html_text,"lxml")<br />
-  
-* Aqui buscamos tudo da tag <li> que tenha classe "vaga odd"<br />
+texto_html=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
+site=BeautifulSoup(html_text,"lxml")
+```
+_Aqui buscamos tudo da tag < li > que tenha classe "vaga odd"_
+```
 empregos=site.find_all('li',class_="vaga odd")
-  
-for emprego in empregos:<br />
-  
-* Nome da empresa sem as tags html<br />
+
+for emprego in empregos:
+```
+_Nome da empresa sem as tags html_
+```
   nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
-  
-* Habilidades Necessarias<br />
-  habilidades=emprego.find('div',class_="detalhes").text.replace("","")
-  
-* data de publicacao<br />
-  datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")<br />
-  print("Nome da empresa{}" .format(nomedaempresa)<br />
-       +"Habilidades Necessarias{}".format(habilidades)<br />
-       +"Data da Publicacao{}".format(datadepubli))
+```  
+_Habilidades Necessarias_
+```
+habilidades=emprego.find('div',class_="detalhes").text.replace("","")
+```
+_Data de publicacao_
+```
+datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")
+print("Nome da empresa{}" .format(nomedaempresa)
+     +"Habilidades Necessarias{}".format(habilidades)
+     +"Data da Publicacao{}".format(datadepubli))
 
   print(" ")     
-  
+```
 =====================|⚙️Terceiro código explicado⚙️|======================<br />
-from bs4 import BeautifulSoup<br />
+```
+from bs4 import BeautifulSoup
 import requests 
+```
 
-
-  * Bucar no endereco html<br />
-html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text<br />
-
-  * Transformar o html em lxml para facilitar a leitura do python<br />
-site=BeautifulSoup(html_text,"lxml")<br />
-
-  * Buscar tudo  pagina WEB , a tag li na class vaga odd<br />
+_Bucar no endereco html_
+```
+html_text=requests.get('https://www.vagas.com.br/vagas-de-programador-python?').text
+```
+_Transformar o html em lxml para facilitar a leitura do python_
+```
+site=BeautifulSoup(html_text,"lxml")
+```
+_Buscar tudo  pagina WEB , a tag li na class vaga odd_
+```
 empregos=site.find_all('li',class_="vaga odd")
 
-with open ("empregos.txt","w",'encoding='utf-8') as arquivo:<br />
-  for emprego in empregos:<br />
-  
-  * Nome da empresa sem as tags html<br />
-    nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")<br />
-  
-  * Habilidades Necessarias<br />
-    habilidades=emprego.find('div',class_="detalhes").text.replace("","")<br />
-  
-  * data de publicacao<br />
-    datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")<br />
-    informacoes={<br />
-      "Nome da empresa":nomedaempresa+"",<br />
-      "Habilidades Necessarias":habilidades+"",<br />
-      "Data da publicacao":datadepubli+"",<br />
-    }<br />
-    arquivo.write (str(informacoes)+"\r\n" +"\r\n")
+with open ("empregos.txt","w",'encoding='utf-8') as arquivo:
+  for emprego in empregos:
+```  
+_Nome da empresa sem as tags html_
+```  
+nomedaempresa=emprego.find('span',class_='emprVaga').text.replace("","")
+```  
+_Habilidades Necessárias_
+```  
+habilidades=emprego.find('div',class_="detalhes").text.replace("","")<br />
+```  
+_Data de publicação_
+```  
+datadepubli=emprego.find('span',class_="data-publicacao").text.replace("","")<br />
+informacoes={<br />
+   "Nome da empresa":nomedaempresa+"",
+   "Habilidades Necessarias":habilidades+"",
+   "Data da publicacao":datadepubli+"",
+    }
+arquivo.write (str(informacoes)+"\r\n" +"\r\n")
+```  
 ======================================================================<br />
 ---Dicionário---<br />
 requests<br />
