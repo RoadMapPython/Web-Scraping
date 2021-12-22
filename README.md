@@ -1,4 +1,4 @@
-# Web-Scrapping
+# Web-Scraping
 ## Componentes usados na live,e um readme para mais detalhes e o link da live gravada: YouTube:
 ###### -Obs: tem um dicionário de palavras no final do documento
 
