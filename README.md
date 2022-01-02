@@ -176,3 +176,6 @@ arquivo.write (str(informacoes)+"\r\n" +"\r\n")
 |Get|pegar|
 |Content|conteudo|
 |Header|cabeçalho|
+|html_text|texto html|
+|find|achar|
+|write|escrever|
