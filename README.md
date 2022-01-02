@@ -168,8 +168,11 @@ arquivo.write (str(informacoes)+"\r\n" +"\r\n")
 ```  
 ======================================================================<br />
 ---Dicionário---<br />
-requests<br />
-response<br />
-get<br />
-content<br />
-headers<br />
+
+| Inglês    | Português      |
+|-----------|----------------|
+|Requests|solicitação|
+|Response|resposta|
+|Get|pegar|
+|Content|conteudo|
+|Header|cabeçalho|
