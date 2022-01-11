@@ -12,7 +12,7 @@ Alguns conceitos
 
 * requests: Baixa arquivos e páginas da Web da internet.
 
-* bs4: Parses HTML, o formato em que as páginas da Web estão escritas.
+* bs4: Analisa o HTML, o formato em que as páginas da Web estão escritas.
 
 * selenium: Lança e controla um navegador da Web. O módulo de selênio é capaz de preencher formulários e simular cliques do mouse neste navegador.
 
