@@ -38,12 +38,12 @@ Agora iremos realizar a instalação de uma outra biblioteca que iremos usar dur
 
 
 Vamos importar a biblioteca "requests" e usar o metodo get
-
+```
 import requests
 
 texto_html = requests.get('https://www.vagas.com.br/vagas-de-programador-python')
 print('Status do codigo:', texto_html.status_code)
-
+```
 Os códigos de status das respostas HTTP indicam se uma requisição HTTP foi corretamente concluída.
 As respostas são agrupadas em cinco classes:
 
